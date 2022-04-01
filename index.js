@@ -63,6 +63,14 @@ client.on('messageCreate', message => {
 	if (reactChannels.includes(message.channel.id)) {
 		message.react(`<:gohawks:959313828263370773>`);
 	}
+
+    // downvote messages with iowa state references
+    const downvoteWords = [`iowa state`, `isu`, `cyclones`, `wendy`, `cy`, `ames`, `iastate`, `engr`, `engineering`];
+    for (let i = 0; i < downvoteWords.length; i++) {
+        if (message.content.toLowerCase().search(downvoteWords[i])) {
+            message.react(`<:Downvote:804489029021073449>`);
+        }
+    }
 	
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// ------------------- April Fools Prank, 2022 ----------------------------------------------------------------------------------
