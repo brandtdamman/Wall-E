@@ -67,7 +67,7 @@ client.on('messageCreate', message => {
     // downvote messages with iowa state references
     const downvoteWords = [`iowa state`, `isu`, `cyclones`, `wendy`, `cy`, `ames`, `iastate`, `engr`, `engineering`];
     for (let i = 0; i < downvoteWords.length; i++) {
-        if (message.content.toLowerCase().search(downvoteWords[i])) {
+        if (message.content.toLowerCase().includes(downvoteWords[i])) {
             message.react(`<:Downvote:804489029021073449>`);
         }
     }
