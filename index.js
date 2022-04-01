@@ -42,6 +42,32 @@ for (const file of buttonFiles) {
 // Command handling
 client.on('messageCreate', message => {
 
+    // ------------------------------------------------------------------------------------------------------------------------------
+	// ------------------- April Fools Prank, 2022 ----------------------------------------------------------------------------------
+	// ------------------------------------------------------------------------------------------------------------------------------
+
+	// send a message to the uiowa website anytime a iowa state link is posted
+	if (message.content.toLowerCase().includes(`iastate.edu`)) {
+		message.reply(`Hey Hawkeye, looks like you grabbed the wrong link! Try searching for a link here: https://uiowa.edu/\n\n Go Hawks!`);
+	}
+
+	// random message replying
+	const responseMessages = [`https://admissions.uiowa.edu/apply-now`, `https://tippie.uiowa.edu/`, `https://theonion.com/thousands-of-students-forced-to-attend-iowa-state-after-1833375032`, `https://art.uiowa.edu/undergraduate-program/art-history`,  `https://reddit.com/r/uiowa/`, `say good bot right now`];
+	var ranNum = Math.random();
+	if (ranNum < 0.03 /* 3% chance of random response from responseMessages array */) {
+		message.reply(responseMessages[Math.floor(Math.random() * responseMessages.length)]);
+	}
+
+	// react to all messages in general channels with the gohawks emoji
+	const reactChannels = [`692490903654367253`, `745392734797562026`, `941410881714147328`, `768639339663327233`, `745394135967596676`]; // channels: #general, #random, #wordle, #memes, #bots
+	if (reactChannels.includes(message.channel.id)) {
+		message.react(`<:gohawks:959313828263370773>`);
+	}
+	
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// ------------------- April Fools Prank, 2022 ----------------------------------------------------------------------------------
+	// ------------------------------------------------------------------------------------------------------------------------------
+
     // logs any DM that is sent to Wall-E that isn't a command
     if (message.channel.type === 'DM' && !message.content.startsWith(prefix) && message.author.id != userIDs.walle) {
         return recievedDM(message);
